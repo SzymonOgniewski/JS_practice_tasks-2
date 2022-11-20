@@ -40,10 +40,10 @@ let remainingTime = () => {
   const days = convertMs(timeLeft).days;
   const hours = convertMs(timeLeft).hours;
   const minutes = convertMs(timeLeft).minutes;
-  htmlSeconds.innerHTML = `${seconds}` || 00;
-  htmlDays.innerHTML = `${days}` || 00;
-  htmlMinutes.innerHTML = `${minutes}` || 00;
-  htmlHours.innerHTML = `${hours}` || 00;
+  htmlSeconds.innerHTML = `${seconds}`;
+  htmlDays.innerHTML = `${days}`;
+  htmlMinutes.innerHTML = `${minutes}`;
+  htmlHours.innerHTML = `${hours}`;
   values.forEach(value => {
     if (value.innerHTML.length < 2) {
       value.innerHTML = value.innerHTML.padStart(2, '0');
