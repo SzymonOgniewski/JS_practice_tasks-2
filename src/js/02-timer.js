@@ -90,7 +90,7 @@ startBtn.addEventListener('click', () => {
     );
   } else if (Date.now() < Date.parse(pickedDate.value)) {
     startBtn.removeAttribute('disabled', '');
-    timerId = setInterval(remainingTime, 1000);
+    timerId = setInterval(remainingTime, 100); // ustawiłem 100 mimo, że powinno być 1000 ze względu na duży delay przed uruchomieniem timera
     startBtn.setAttribute('disabled', '');
     resetBtn.removeAttribute('disabled', '');
   }
