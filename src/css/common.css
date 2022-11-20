@@ -10,6 +10,7 @@ body {
   background-color: #efefef;
   color: #212121;
   line-height: 1.5;
+  width: 100%;
 }
 
 img {
@@ -18,6 +19,12 @@ img {
 }
 .container {
   background-color: #896fbc;
+  padding-bottom:50px
+}
+@media screen and (max-width: 767px) {
+  .timer {
+    flex-direction: column;
+  }
 }
 .timer {
   padding-top: 50px;

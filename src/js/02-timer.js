@@ -95,9 +95,13 @@ startBtn.addEventListener('click', () => {
     resetBtn.removeAttribute('disabled', '');
   }
 });
-
+resetBtn.setAttribute('disabled', '');
 resetBtn.addEventListener('click', () => {
   clearInterval(timerId);
   resetBtn.setAttribute('disabled', '');
   startBtn.removeAttribute('disabled', '');
+  htmlSeconds.innerHTML = '00';
+  htmlDays.innerHTML = '00';
+  htmlMinutes.innerHTML = '00';
+  htmlHours.innerHTML = '00';
 });
