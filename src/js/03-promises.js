@@ -1,39 +1,42 @@
 import Notiflix from 'notiflix';
 
+const firstDelay = document.querySelector('input[name="delay"]');
+const stepDelay = document.querySelector('input[name="step"]');
+const amount = document.querySelector('input[name="amount"]');
 const form = document.querySelector('.form');
 
-function createPromise(position, delay) {
-  const shouldResolve = Math.random() > 0.3;
-  console.log(shouldResolve);
+form.addEventListener('submit', submitEventHandler);
 
-  const promise = new Promise((resolve, reject) => {
-    if (shouldResolve) {
-      resolve(
-        Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`
-        )
-      );
-      // Fulfill
-    } else {
-      reject(
-        Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`)
-      );
-      // Reject
-    }
+function createPromise(position, delay) {
+  return new Promise((resolve, reject) => {
+    const shouldResolve = Math.random() > 0.3;
+
+    setTimeout(() => {
+      if (shouldResolve) {
+        resolve({ position, delay });
+      }
+      reject({ position, delay });
+    }, delay);
   });
 }
-console.log(createPromise(1, 1500));
 
-// form.addEventListener('sumbit', () => {
-//   preventDefault();
-//   const { elements:{startDelay, stepDelay, amount} = event.currentTarget}
-//   setTimeout(() => {
-//     let i = 1
+function submitEventHandler(event) {
+  event.preventDefault();
 
-//     while (i <= amount) {
-//       position === i;
-//       i++
-//       createPromise(delay===stepDelay)
-//     }
-//   },startDelay);
-// });
+  const delay = Number.parseInt(firstDelay.value);
+  const step = Number.parseInt(stepDelay.value);
+
+  for (let i = 0; i < amount.value; i++) {
+    createPromise(i + 1, delay + step * i)
+      .then(({ position, delay }) => {
+        Notiflix.Notify.success(
+          `✅ Fulfilled promise ${position} in ${delay}ms`
+        );
+      })
+      .catch(({ position, delay }) => {
+        Notiflix.Notify.failure(
+          `❌ Rejected promise ${position} in ${delay}ms`
+        );
+      });
+  }
+}
