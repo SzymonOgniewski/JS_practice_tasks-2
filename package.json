@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://szymonogniewski.github.io/countdown-timer-and-other-tasks/",
+  "homepage": "https://szymonogniewski.github.io/JS_practice_tasks-2/",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /countdown-timer-and-other-tasks/"
+    "build": "parcel build src/*.html --public-url /JS_practice_tasks-2/"
   },
   "repository": {
     "type": "git",
